@@ -206,6 +206,35 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
 .badge-neutral{color:var(--t3);}
 .pending{font-family:var(--display)!important;font-style:italic;font-weight:var(--fw-regular);font-size:var(--text-base);letter-spacing:0;text-transform:none;gap:0;background:none;color:var(--warm);}
 .pending::before{content:none!important;display:none;}
+
+/* ---- earning-potential pricing module ---- */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:var(--sp5);margin-top:var(--sp8);align-items:stretch;}
+.calc-in{background:var(--bg1);border-radius:var(--r);padding:var(--sp7);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:var(--sp6);}
+.calc-field label{display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp3);font-size:var(--text-sm);color:var(--t2);margin-bottom:var(--sp3);font-weight:var(--fw-medium);}
+.calc-val{font-family:var(--mono);color:var(--accent);font-size:var(--text-base);}
+.calc-field input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer;}
+.seg2{display:flex;gap:var(--sp2);}
+.seg-b{flex:1;border:1px solid var(--bd2);background:none;border-radius:var(--r-pill);padding:10px;font:inherit;font-size:var(--text-sm);color:var(--t2);cursor:pointer;transition:border-color var(--dur),color var(--dur),background var(--dur);}
+.seg-b.on{border-color:var(--accent);color:var(--accent);background:var(--accent-lt);}
+.calc-out{background:linear-gradient(135deg,var(--bg1),color-mix(in srgb,var(--accent) 10%,var(--bg1)));border-radius:var(--r);padding:var(--sp8) var(--sp7);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;justify-content:center;}
+.calc-k{font-family:var(--mono);font-size:var(--text-2xs);letter-spacing:var(--ls-wider);text-transform:uppercase;color:var(--t3);}
+.calc-big{font-family:var(--display);font-size:var(--text-4xl);color:var(--accent);line-height:1.05;margin:var(--sp3) 0;letter-spacing:var(--ls-tight);}
+.calc-note{font-size:var(--text-sm);color:var(--t2);line-height:var(--lh-snug);margin:0;}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp4);margin-top:var(--sp5);}
+.tier{background:var(--bg1);border-radius:var(--r);padding:var(--sp7);box-shadow:var(--shadow-sm);}
+.tier.featured{box-shadow:0 0 0 2px var(--accent-lt),var(--shadow);}
+.tier .svc-n{font-family:var(--mono);font-size:var(--text-2xs);letter-spacing:var(--ls-wider);text-transform:uppercase;color:var(--accent);}
+.tier h3{font-family:var(--display);font-weight:var(--fw-regular);font-size:var(--text-xl);margin:var(--sp2) 0 var(--sp1);letter-spacing:var(--ls-tight);}
+.price-v{font-family:var(--display);font-size:var(--text-3xl);color:var(--t1);letter-spacing:var(--ls-tight);margin:var(--sp2) 0;}
+.tier p{font-size:var(--text-sm);color:var(--t2);line-height:var(--lh-relaxed);margin:0;}
+.vs{margin-top:var(--sp6);border-radius:var(--r);overflow:hidden;background:var(--bg1);box-shadow:var(--shadow-sm);}
+.vs-row{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:var(--sp4);padding:var(--sp4) var(--sp6);border-bottom:1px solid var(--bd);font-size:var(--text-base);color:var(--t2);align-items:center;}
+.vs-row:last-child{border-bottom:none;}
+.vs-head{font-family:var(--mono);font-size:var(--text-2xs);letter-spacing:var(--ls-wider);text-transform:uppercase;color:var(--t3);}
+.vs-row b{color:var(--t1);font-weight:var(--fw-semi);}
+.vs-row.vs-rh{background:var(--accent-lt);}
+.calc-disc{font-size:var(--text-sm);color:var(--t3);line-height:var(--lh-relaxed);margin-top:var(--sp5);max-width:72ch;}
+@media(max-width:860px){.calc,.tiers{grid-template-columns:1fr;}.vs-row{grid-template-columns:1fr;gap:var(--sp1);}.vs-head{display:none;}.vs-row span:nth-child(2)::before{content:"Cost: ";color:var(--t3);}.vs-row span:nth-child(3)::before{content:"Aligned: ";color:var(--t3);}}
 </style>
 </head>
 <body>
@@ -220,6 +249,7 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
       <a href="#services">Services</a>
       <a href="#markets">Who I help</a>
       <a href="#record">Track record</a>
+      <a href="#pricing">Pricing</a>
     </div>
     <div class="nav-actions">
       <button class="nav-btn" id="themeToggle" type="button" aria-label="Toggle color theme">
@@ -526,6 +556,77 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
     </div>
   </section>
 
+  <!-- PRICING: earning-potential module -->
+  <section class="wrap sect reveal anchor" id="pricing" data-tint="b">
+    <div class="sect-head lg" style="max-width:62ch;">
+      <span class="label-accent">Pricing</span>
+      <h2>Priced to what you win &mdash; not a flat fee.</h2>
+      <p>
+        Most firms bill the same whether you win or not. We price to the value in front of you.
+        Put in your numbers and see the estimate.
+      </p>
+    </div>
+
+    <div class="calc">
+      <div class="calc-in">
+        <div class="calc-field">
+          <label>Your side of the table</label>
+          <div class="seg2">
+            <button type="button" class="seg-b on" data-role="vendor">Winning contracts</button>
+            <button type="button" class="seg-b" data-role="buyer">Buying &amp; running programs</button>
+          </div>
+        </div>
+        <div class="calc-field">
+          <label>Annual contract value in play <span id="volOut" class="calc-val">$5.0M</span></label>
+          <input type="range" id="vol" min="250000" max="50000000" step="250000" value="5000000">
+        </div>
+        <div class="calc-field">
+          <label><span id="wrLabel">Current win rate</span> <span id="wrOut" class="calc-val">25%</span></label>
+          <input type="range" id="wr" min="5" max="90" step="1" value="25">
+        </div>
+      </div>
+      <div class="calc-out">
+        <div class="calc-k">Estimated annual upside</div>
+        <div class="calc-big" id="upside">$450K&ndash;$750K</div>
+        <p class="calc-note" id="upnote">What better contracting could win you in a year, on the numbers you entered.</p>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="svc-n">Start</div>
+        <h3>Working session</h3>
+        <div class="price-v" id="p1">from $1.5K</div>
+        <p>A paid, focused hour on the deal or problem in front of you. You leave with something usable.</p>
+      </div>
+      <div class="tier featured">
+        <div class="svc-n">Value engagement</div>
+        <h3>Priced to your upside</h3>
+        <div class="price-v" id="p2">~$48K</div>
+        <p>A scoped engagement to capture the upside above &mdash; priced as a small share of it, so we win when you do.</p>
+      </div>
+      <div class="tier">
+        <div class="svc-n">Ongoing</div>
+        <h3>Retainer / interim</h3>
+        <div class="price-v" id="p3">$9K/mo</div>
+        <p>A seasoned operator in the seat, month to month, through a build or transition.</p>
+      </div>
+    </div>
+
+    <div class="vs">
+      <div class="vs-row vs-head"><span>Your option</span><span>What it costs</span><span>Skin in the game</span></div>
+      <div class="vs-row vs-rh"><span><b>This firm</b> &mdash; value-based</span><span id="vsRh">~$48K &mdash; a slice of your upside</span><span>Yes &mdash; priced to what you win</span></div>
+      <div class="vs-row"><span>Big-4 / traditional consulting</span><span id="vsBig">~$150K+ flat, win or lose</span><span>No</span></div>
+      <div class="vs-row"><span>Doing nothing</span><span id="vsNone">$450K&ndash;$750K left on the table</span><span>&mdash;</span></div>
+    </div>
+
+    <p class="calc-disc">
+      Estimate only &mdash; a range derived from the numbers you entered, not a promise or a
+      guarantee of results. Your real figures depend on your actual contracts and the work we do
+      together.
+    </p>
+  </section>
+
   <!-- CONTACT -->
   <section class="wrap sect reveal anchor" id="contact" data-tint="c">
     <div class="book">
@@ -564,6 +665,7 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
           <a href="#services">Services</a>
           <a href="#markets">Who I help</a>
           <a href="#record">Track record</a>
+      <a href="#pricing">Pricing</a>
           <a href="#contact">Book a session</a>
           <a href="mailto:rebecca@rebeccaharrisadvisory.com">rebecca@rebeccaharrisadvisory.com</a>
         </div>
@@ -615,6 +717,47 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
   sweep();
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll, {passive:true});
+})();
+</script>
+
+<script>
+(function(){
+  var vol=document.getElementById('vol'), wr=document.getElementById('wr');
+  if(!vol||!wr) return;
+  var role='vendor';
+  function fmt(n){n=Math.round(n);if(n>=1e6)return '$'+(n/1e6).toFixed(n>=1e7?0:1)+'M';if(n>=1e3)return '$'+Math.round(n/1e3)+'K';return '$'+n;}
+  function calc(){
+    var V=+vol.value, W=(+wr.value)/100, lo, hi, note;
+    if(role==='vendor'){
+      document.getElementById('wrLabel').textContent='Current win rate';
+      var gain=Math.max(0.02, Math.min(0.12, 0.60 - W));  // headroom to a 60% cap, up to +12 pts
+      var mid=V*gain; lo=mid*0.75; hi=mid*1.25;
+      note='Additional awards sharper bids and negotiation could win you in a year, on the numbers you entered.';
+    } else {
+      document.getElementById('wrLabel').textContent='Share of spend you can renegotiate';
+      lo=V*W*0.05; hi=V*W*0.11;
+      note='What sharper procurement and vendor negotiation could save on that spend in a year.';
+    }
+    var mid=(lo+hi)/2;
+    document.getElementById('volOut').textContent=fmt(V);
+    document.getElementById('wrOut').textContent=(+wr.value)+'%';
+    document.getElementById('upside').innerHTML=fmt(lo)+'&ndash;'+fmt(hi);
+    document.getElementById('upnote').textContent=note;
+    var value=Math.max(3500, Math.round(mid*0.08/500)*500);
+    var mo=Math.max(2500, Math.round(mid*0.015/500)*500);
+    var big=Math.max(75000, value*2);
+    document.getElementById('p1').textContent='from $1.5K';
+    document.getElementById('p2').textContent='~'+fmt(value);
+    document.getElementById('p3').textContent=fmt(mo)+'/mo';
+    document.getElementById('vsRh').innerHTML='~'+fmt(value)+' &mdash; a slice of your upside';
+    document.getElementById('vsBig').innerHTML='~'+fmt(big)+'+ flat, win or lose';
+    document.getElementById('vsNone').innerHTML=fmt(lo)+'&ndash;'+fmt(hi)+' left on the table';
+  }
+  [].forEach.call(document.querySelectorAll('.seg-b'),function(b){
+    b.addEventListener('click',function(){role=b.getAttribute('data-role');
+      [].forEach.call(document.querySelectorAll('.seg-b'),function(x){x.classList.toggle('on',x===b)});calc();});
+  });
+  vol.addEventListener('input',calc); wr.addEventListener('input',calc); calc();
 })();
 </script>
 </body>
