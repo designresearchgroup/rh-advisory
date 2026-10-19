@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>RH Advisory — Government Contracting, Procurement &amp; Negotiation</title>
-<meta name="description" content="A consulting government contractor built on twenty years of contract negotiation. Government contracting, procurement and vendor negotiation, healthcare-payer and Medi-Cal contracting, delegated credentialing, and public-health operations.">
+<title>RH Advisory — Contract Advisory: Quotes, RFPs &amp; Negotiation</title>
+<meta name="description" content="Upload a contract or RFP and get it mapped to money — where the value, risk, and leverage are, and what the work costs. Contract advisory built on twenty years of negotiation across healthcare, government, and public-health programs.">
 <meta name="author" content="Rebecca Harris">
 <meta property="og:title" content="RH Advisory — Government Contracting, Procurement &amp; Negotiation">
 <meta property="og:description" content="Government runs on contracts. Twenty years of contract negotiation, now at the service of government contracting, procurement, and vendor relations.">
@@ -119,7 +119,7 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
 .anchor{scroll-margin-top:calc(var(--nav-h) + var(--sp5));}
 
 /* hero */
-.hero{padding-block:var(--sp16) var(--sp14);position:relative;}
+.hero{padding-block:var(--sp16) var(--sp14);position:relative;overflow:clip;}
 .hero::before{content:"";position:absolute;z-index:-1;top:-18%;left:-10%;width:60%;height:140%;background:radial-gradient(closest-side,rgba(46,139,131,.15),transparent 72%);filter:blur(36px);border-radius:50%;pointer-events:none;}
 .hero::after{content:"";position:absolute;z-index:-1;top:4%;right:-12%;width:46%;height:90%;background:radial-gradient(closest-side,rgba(224,147,107,.16),transparent 70%);filter:blur(38px);border-radius:50%;pointer-events:none;}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:var(--sp12);align-items:center;}
@@ -236,6 +236,21 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
 .vs-row.vs-rh b{color:var(--accent);}
 .calc-disc{font-size:var(--text-sm);color:var(--t3);line-height:var(--lh-relaxed);margin-top:var(--sp5);max-width:72ch;}
 @media(max-width:860px){.calc,.tiers{grid-template-columns:1fr;}.vs-row{grid-template-columns:1fr;gap:var(--sp1);}.vs-head{display:none;}.vs-row span:nth-child(2)::before{content:"Cost: ";color:var(--t3);}.vs-row span:nth-child(3)::before{content:"Aligned: ";color:var(--t3);}}
+/* ---- quote form ---- */
+.qform{margin-top:var(--sp8);max-width:780px;}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp6) var(--sp8);}
+.qf{display:flex;flex-direction:column;gap:var(--sp2);}
+.qf.full{grid-column:1 / -1;}
+.qf label{font-size:var(--text-sm);color:var(--t2);font-weight:var(--fw-medium);}
+.qf .qopt{color:var(--t3);font-weight:var(--fw-regular);}
+.qf input,.qf select{font:inherit;font-size:var(--text-base);color:var(--t1);background:none;border:none;border-bottom:1px solid var(--bd2);border-radius:0;padding:9px 2px;width:100%;transition:border-color var(--dur);}
+.qf input::placeholder,.qf textarea::placeholder{color:var(--t3);}
+.qf input:focus,.qf select:focus,.qf textarea:focus{outline:none;border-bottom-color:var(--accent);}
+.qf textarea{font:inherit;font-size:var(--text-base);color:var(--t1);background:var(--bg1);border:1px solid var(--bd2);border-radius:var(--r-sm);padding:11px 13px;width:100%;min-height:92px;resize:vertical;box-shadow:var(--shadow-sm);transition:border-color var(--dur);}
+.qf textarea:focus{border-color:var(--accent);}
+.qform button[type=submit]{margin-top:var(--sp8);}
+.qnote{font-size:var(--text-sm);color:var(--t3);line-height:var(--lh-relaxed);margin-top:var(--sp5);max-width:62ch;}
+@media(max-width:700px){.qgrid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -246,6 +261,7 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
       <span class="nav-logo-text">RH&nbsp;ADVISORY</span>
     </a>
     <div class="nav-links">
+      <a href="#how">How it works</a>
       <a href="#approach">Approach</a>
       <a href="#services">Services</a>
       <a href="#markets">Who I help</a>
@@ -259,7 +275,7 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
           <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
         </svg>
       </button>
-      <a class="btn btn-solid btn-sm nav-book" href="#contact"><span class="nav-book-lg">Book a working session</span><span class="nav-book-sm">Book</span></a>
+      <a class="btn btn-solid btn-sm nav-book" href="#quote"><span class="nav-book-lg">Upload your contract</span><span class="nav-book-sm">Quote</span></a>
     </div>
   </div>
 </nav>
@@ -271,24 +287,66 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
     <div class="hero-grid">
       <div>
         <span class="label-accent hero-live rh-eyebrow">
-          <span class="live-dot"></span>&nbsp;Consulting government contractor &middot; contract negotiation &middot; 20 years
+          <span class="live-dot"></span>&nbsp;Contract Advisory &middot; built on 20 years of negotiation
         </span>
-        <h1>Government runs on contracts. <em>We&rsquo;re built to negotiate them.</em></h1>
+        <h1>Every deal runs on a contract. <em>Send us yours.</em></h1>
         <p class="hero-sub">
-          Two decades negotiating and managing complex contracts and provider networks &mdash; now
-          at work across government contracting, procurement, and vendor negotiation.
+          Upload a contract or an RFP and we&rsquo;ll map it to money &mdash; where the value, the
+          risk, and the leverage are &mdash; then quote the work to capture it. Built on two decades
+          negotiating the agreements behind healthcare, government, and public-health programs.
         </p>
         <div class="sect-cta" style="margin-top:var(--sp8);justify-content:flex-start;">
-          <a class="btn btn-solid btn-lg" href="#contact">Book a working session &rarr;</a>
-          <a class="btn btn-outline btn-lg" href="#approach">How I think about it</a>
+          <a class="btn btn-solid btn-lg" href="#quote">Upload your contract for a quote or RFP &rarr;</a>
+          <a class="btn btn-outline btn-lg" href="#how">How it works</a>
         </div>
       </div>
       <div style="padding-top:var(--sp6);">
         <p style="color:var(--t2);line-height:var(--lh-relaxed);margin:0;">
-          RH Advisory is a professional-services firm built on two decades of hands-on
-          contract negotiation. We built that depth in healthcare and behavioral health &mdash; and
-          we bring it to government contracting and procurement, where the whole system runs on
-          agreements someone has to negotiate, hold, and make deliver.
+          RH Advisory is contract advisory as a service &mdash; not just a consultant you book, but a
+          front door for the agreement in front of you. Any organization whose outcome rides on a
+          contract: a vendor chasing an award, an agency buying services, a company renewing a deal
+          it can&rsquo;t afford to get wrong. We&rsquo;re not waiting on a government solicitation to
+          be useful.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS: the process, as a pitch -->
+  <section class="wrap sect reveal anchor" id="how" data-tint="b">
+    <div class="sect-head lg" style="max-width:60ch;">
+      <span class="label-accent">How it works</span>
+      <h2>Bring a contract. Leave with a plan and a price.</h2>
+      <p>
+        The engagement starts with a document you already have &mdash; an RFP you&rsquo;re deciding
+        whether to bid, a contract up for renewal, a vendor agreement that isn&rsquo;t delivering.
+        No long discovery. Send it, and the work comes back mapped to money.
+      </p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="label-accent">Step one</span>
+        <h3>Upload your contract or RFP</h3>
+        <p>
+          Send the agreement or the solicitation. It attaches to your own email straight to us
+          &mdash; never posted to a public form &mdash; so the document stays confidential.
+        </p>
+      </div>
+      <div class="pillar">
+        <span class="label-accent">Step two</span>
+        <h3>We map it to money</h3>
+        <p>
+          We read it against twenty years of negotiated agreements &mdash; Rebecca&rsquo;s playbook
+          of what holds, what leaks, and where the leverage sits &mdash; and show you the upside,
+          the risk, and the terms worth fighting for.
+        </p>
+      </div>
+      <div class="pillar">
+        <span class="label-accent">Step three</span>
+        <h3>You get a quote</h3>
+        <p>
+          A scoped, value-based engagement priced to the upside we find &mdash; a slice of
+          what&rsquo;s on the table, not a flat bill. You decide whether to run it.
         </p>
       </div>
     </div>
@@ -628,6 +686,52 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
     </p>
   </section>
 
+  <!-- QUOTE: upload your contract for a quote or RFP -->
+  <section class="wrap sect reveal anchor" id="quote" data-tint="a">
+    <div class="sect-head lg" style="max-width:60ch;">
+      <span class="label-accent">Get a quote</span>
+      <h2>Upload your contract for a quote or RFP.</h2>
+      <p>
+        Tell us what you&rsquo;re working on. We&rsquo;ll open a secure email for you to attach the
+        document &mdash; it goes straight to us, never onto a public server &mdash; and come back
+        with where the value is and what the work would cost.
+      </p>
+    </div>
+    <form id="quoteForm" class="qform" novalidate>
+      <div class="qgrid">
+        <div class="qf"><label for="qname">Your name</label><input id="qname" type="text" autocomplete="name"></div>
+        <div class="qf"><label for="qemail">Email</label><input id="qemail" type="email" autocomplete="email"></div>
+        <div class="qf"><label for="qorg">Organization</label><input id="qorg" type="text" autocomplete="organization"></div>
+        <div class="qf"><label for="qside">Your side of the table</label>
+          <select id="qside">
+            <option value="">Select&hellip;</option>
+            <option>Winning contracts (vendor / prime)</option>
+            <option>Buying &amp; running programs (agency / buyer)</option>
+            <option>Renewing or reviewing a deal</option>
+          </select>
+        </div>
+        <div class="qf"><label for="qtype">What are you sending?</label>
+          <select id="qtype">
+            <option value="">Select&hellip;</option>
+            <option>An RFP / solicitation</option>
+            <option>An existing contract</option>
+            <option>A vendor agreement</option>
+            <option>A renewal</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="qf"><label for="qvalue">Approx. annual value <span class="qopt">(optional)</span></label><input id="qvalue" type="text" placeholder="e.g. $2M"></div>
+        <div class="qf"><label for="qdeadline">Deadline <span class="qopt">(optional)</span></label><input id="qdeadline" type="text" placeholder="e.g. bid due Nov 14"></div>
+        <div class="qf full"><label for="qneed">What do you need?</label><textarea id="qneed" placeholder="A sentence or two on the decision in front of you."></textarea></div>
+      </div>
+      <button type="submit" class="btn btn-solid btn-lg">Attach your contract &amp; send &rarr;</button>
+      <p class="qnote">
+        Your document stays confidential &mdash; it attaches to your own email to us, not to any
+        form or server. We reply with where the value is and a quote for the work.
+      </p>
+    </form>
+  </section>
+
   <!-- CONTACT -->
   <section class="wrap sect reveal anchor" id="contact" data-tint="c">
     <div class="book">
@@ -759,6 +863,28 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
       [].forEach.call(document.querySelectorAll('.seg-b'),function(x){x.classList.toggle('on',x===b)});calc();});
   });
   vol.addEventListener('input',calc); wr.addEventListener('input',calc); calc();
+})();
+</script>
+<script>
+(function(){
+  var f=document.getElementById('quoteForm'); if(!f) return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
+    var to='rebecca@rebeccaharrisadvisory.com';
+    var subj='Contract Advisory — quote request'+(g('qorg')?(' — '+g('qorg')):'');
+    var body=
+      'Name: '+g('qname')+'\n'+
+      'Email: '+g('qemail')+'\n'+
+      'Organization: '+g('qorg')+'\n'+
+      'Side of the table: '+g('qside')+'\n'+
+      'Document type: '+g('qtype')+'\n'+
+      'Approx. annual value: '+g('qvalue')+'\n'+
+      'Deadline: '+g('qdeadline')+'\n\n'+
+      'What I need:\n'+g('qneed')+'\n\n'+
+      '--- Please attach your contract or RFP to this email before sending. ---';
+    window.location.href='mailto:'+to+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  });
 })();
 </script>
 </body>
