@@ -117,6 +117,12 @@ textarea{min-height:84px;resize:vertical;line-height:1.5;}
   pointer-events:none;transition:opacity .2s;z-index:50;}
 .toast.show{opacity:1;}
 .foot{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--muted);font-size:12px;line-height:1.6;}
+
+/* de-templated badges — editorial serif italic, no dot/fill/caps */
+.badge{font-family:var(--display)!important;font-style:italic;font-weight:400;font-size:13px;letter-spacing:0;text-transform:none;gap:0;}
+.badge::before{content:none!important;display:none;}
+.pv-tags span{font-family:var(--display)!important;font-style:italic;font-weight:400;font-size:14px;gap:0;color:var(--cobalt);}
+.pv-tags span::before{content:none!important;display:none;}
 </style>
 </head>
 <body>

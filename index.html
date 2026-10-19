@@ -198,6 +198,14 @@ p strong,li strong,p b,li b{font-weight:var(--fw-semi);}
 .js-reveal .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
 .js-reveal .reveal.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){.js-reveal .reveal{opacity:1;transform:none;transition:none;}}
+
+/* de-templated badges — editorial serif italic, no dot/fill/caps */
+.badge{font-family:var(--display)!important;font-style:italic;font-weight:var(--fw-regular);font-size:var(--text-lg);letter-spacing:0;text-transform:none;gap:0;background:none;color:var(--t3);}
+.badge::before{content:none!important;display:none;}
+.badge-accent{color:var(--accent);}
+.badge-neutral{color:var(--t3);}
+.pending{font-family:var(--display)!important;font-style:italic;font-weight:var(--fw-regular);font-size:var(--text-base);letter-spacing:0;text-transform:none;gap:0;background:none;color:var(--warm);}
+.pending::before{content:none!important;display:none;}
 </style>
 </head>
 <body>
